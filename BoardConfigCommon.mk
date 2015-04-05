@@ -65,8 +65,8 @@ COMMON_GLOBAL_CFLAGS += -DPROPERTY_PERMS_APPEND=' \
     { "persist.data.front.minfps", AID_MEDIA, 0 }, \
     '
 
-# CMHW
-BOARD_HARDWARE_CLASS := $(LOCAL_PATH)/cmhw/
+# MKHW
+BOARD_HARDWARE_CLASS := $(LOCAL_PATH)/mkhw/
 
 # Display
 BOARD_EGL_CFG := $(LOCAL_PATH)/configs/egl.cfg

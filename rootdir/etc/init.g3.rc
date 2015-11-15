@@ -482,6 +482,22 @@ service battery_monitor /system/bin/battery_monitor
     group system
     disabled
 
+service ril-daemon2 /system/bin/rild -c 2
+    class main
+    socket rild2 stream 660 root radio
+    socket rild-debug2 stream 660 radio system
+    user root
+    disabled
+    group radio cache inet misc audio sdcard_r sdcard_rw diag qcom_diag log net_raw
+
+service ril-daemon3 /system/bin/rild -c 3
+    class main
+    socket rild3 stream 660 root radio
+    socket rild-debug3 stream 660 radio system
+    user root
+    disabled
+    group radio cache inet misc audio sdcard_r sdcard_rw diag qcom_diag log net_raw
+
 service bdaddr_loader /system/bin/bdaddr_loader
     user root
     group bluetooth net_bt_admin misc net_bt_stack
@@ -769,6 +785,7 @@ service mtsd /system/bin/mtsd
 
 service netmgrd /system/bin/netmgrd
     class core
+    disabled
 
 service p2p_supplicant /system/bin/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
@@ -858,6 +875,12 @@ service qmuxd /system/bin/qmuxd
     class core
     user radio
     group radio audio bluetooth gps qcom_diag
+    disabled
+
+service qcom-c_main-sh /system/bin/sh /init.class_main.sh
+    class main
+    user root
+    oneshot
 
 service qosmgrd /system/bin/qosmgr /system/etc/qosmgr_rules.xml
    user system
@@ -880,11 +903,6 @@ service quipc_main /system/bin/quipc_main
     user gps
     group gps net_admin wifi inet
     disabled
-
-service ril-qmi /system/bin/sh /init.galbi.ril.sh
-    class main
-    user root
-    oneshot
 
 service rmt_storage /system/bin/rmt_storage
     class core

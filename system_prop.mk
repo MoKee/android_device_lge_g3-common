@@ -52,8 +52,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.add_power_save=1 \
-    persist.radio.apm_sim_not_pwdn=1 \
-    ro.telephony.ril_class=LgeLteRIL \
+    persist.radio.apm_sim_not_pwdn=1
+
+# Remove ril class on g3 dualsim variants to fix no sim
+ifneq ($(filter g3 d850 d851 d852 d855 ls990 vs985 f400 f400s, $(TARGET_DEVICE)),)
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.telephony.ril_class=LgeLteRIL
+endif
 
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.data.netmgrd.qos.enable=false \

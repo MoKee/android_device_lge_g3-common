@@ -65,8 +65,8 @@ COMMON_GLOBAL_CFLAGS += -DPROPERTY_PERMS_APPEND=' \
     { "persist.data.front.minfps", AID_MEDIA, 0 }, \
     '
 
-# CMHW
-BOARD_HARDWARE_CLASS := $(LOCAL_PATH)/cmhw/
+# MKHW
+BOARD_HARDWARE_CLASS := $(LOCAL_PATH)/mkhw/
 TARGET_TAP_TO_WAKE_NODE := "/sys/devices/virtual/input/lge_touch/tap_to_wake"
 
 # Crypto

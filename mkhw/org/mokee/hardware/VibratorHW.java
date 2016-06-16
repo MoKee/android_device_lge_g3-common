@@ -17,14 +17,14 @@
 
 package org.mokee.hardware;
 
-import org.mokee.hardware.util.FileUtils;
+import org.mokee.internal.util.FileUtils;
 
 public class VibratorHW {
 
     private static String NFORCE_PATH = "/sys/devices/platform/tspdrv/nforce_timed";
 
     public static boolean isSupported() {
-        return true;
+        return FileUtils.isFileWritable(NFORCE_PATH);
     }
 
     public static int getMaxIntensity()  {
